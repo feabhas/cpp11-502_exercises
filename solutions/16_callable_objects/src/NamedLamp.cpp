@@ -5,20 +5,17 @@
 #include "NamedLamp.h"
 #include <iostream>
 
-using std::cout;
-using '\n';
-
 namespace Home
 {
   void NamedLamp::on()
   {
-    cout << name << ": ";
+    std::cout << name << ": ";
     Lamp::on();
   }
 
   void NamedLamp::off()
   {
-    cout << name << ": ";
+    std::cout << name << ": ";
     Lamp::off();
   }
 
