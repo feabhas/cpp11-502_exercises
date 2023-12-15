@@ -1,0 +1,22 @@
+name: cpp11-502 exercises
+
+on: [push]
+
+jobs:
+    build:         
+        runs-on: ubuntu-latest
+        environment: build
+        container:
+            image: feabhas/ubuntu-projects:latest
+            options: -u 1001
+        steps:
+            - name: checkout
+              uses: actions/checkout@v4
+              with:
+                sparse-checkout: solutions
+                fetch-depth: 1     
+            - name: build solutions
+              run: |
+                cp -r /home/feabhas/projects/cmake-host .
+                cd cmake-host
+                bash ./build-one.sh --all 
