@@ -1,0 +1,56 @@
+#!python
+import os
+
+# ----------------------------------------------------------------------------
+#
+Help("""
+Type: 'scons' to build the project
+      'scons -c' to clean build
+      'scons --tdd' to build with doctest
+      'scons --tdd -c' to clean test
+""")
+
+AddOption('--tdd',
+          action='store_true',
+          help='TDD build',
+          default=False)
+
+# ----------------------------------------------------------------------------
+env = Environment(ENV=os.environ)
+
+full_path = os.path.realpath(".")
+path, cwd = os.path.split(full_path)
+
+# Set the target executable based on current dir name
+# target = cwd
+target = 'App'
+
+# ----------------------------------------------------------------------------
+# Output (variant) directory
+#
+vdir = 'build/debug/'
+tdir = 'build/test/'
+
+# CCFLAGS : general C and C++ flags
+env.Append(CCFLAGS=[
+    '-Wall',
+    '-Wextra',
+    '-std=c++17',
+])
+
+sources = [
+    'src/main.cpp',
+]
+
+# Set up any required libraries
+env.Append(LIBS=['pthread'])
+
+if GetOption('tdd'):
+    print '*** TDD build ***'
+    env.Append(CPPPATH=['#../doctest/doctest', 'test', '.'])
+    env.Append(CPPDEFINES=['TDD', ])
+    sources.remove('src/main.cpp')
+    sources += Glob('test/*.cpp')
+
+
+env.Program(target=target, source=sources)
