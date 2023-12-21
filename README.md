@@ -4,6 +4,17 @@ Exercise solutions and cmake projects for:
 
    * C++11-502 Real-Time Modern C++ (C++11/14/17)
 
+**Contents**
+- [Real-Time Modern C++ (C++11/14/17) Exercises](#real-time-modern-c-c111417-exercises)
+- [Folder structure](#folder-structure)
+  - [Solutions](#solutions)
+  - [Workspace](#workspace)
+- [Build Toolchain](#build-toolchain)
+  - [Build the application](#build-the-application)
+  - [Visual Studio shortcuts](#visual-studio-shortcuts)
+  - [Command line builds](#command-line-builds)
+  - [Building an exercise solution](#building-an-exercise-solution)
+- [Disclaimer](#disclaimer)
 
 # Folder structure
 
